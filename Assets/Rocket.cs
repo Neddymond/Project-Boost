@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour {
     [SerializeField] float rcsThrust = 100f;
@@ -25,10 +26,15 @@ public class Rocket : MonoBehaviour {
         switch(collision.gameObject.tag)
         {
             case "Friendly":
-                print("ok");
+                print("start");
+                break;
+            case "Finish":
+                print("Hit finish");
+                SceneManager.LoadScene(0);
                 break;
             default:
                 print("dead");
+                SceneManager.LoadScene(1);
                 break;
         }
     }
