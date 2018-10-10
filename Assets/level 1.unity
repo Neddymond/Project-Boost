@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 20, y: 0, z: 0}
+  period: 2
   movementFactor: 1
 --- !u!1001 &1057717175
 Prefab:
@@ -1564,6 +1565,7 @@ GameObject:
   - component: {fileID: 1502001224}
   - component: {fileID: 1502001223}
   - component: {fileID: 1502001222}
+  - component: {fileID: 1502001225}
   m_Layer: 0
   m_Name: obstacles
   m_TagString: Untagged
@@ -1627,6 +1629,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1502001221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1502001225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502001221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea78b6592f2ed6459afda9b68e1997f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 10, y: 10, z: 43}
+  period: 2
+  movementFactor: 1
 --- !u!4 &1535679004
 Transform:
   m_ObjectHideFlags: 0
