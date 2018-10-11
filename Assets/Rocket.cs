@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Rocket : MonoBehaviour {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] float levelLoadDelay = 2f;
 
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip newLevel;
@@ -62,17 +63,16 @@ public class Rocket : MonoBehaviour {
         audioSource.Stop();
         audioSource.PlayOneShot(newLevel);
         newLevelParticles.Play();
-        Invoke("LoadNextLevel", 1f); //parametarise time
+        Invoke("LoadNextLevel", levelLoadDelay); 
     }
 
     private void StartDeathSequence()
     {
-        print("Hit something deadly");
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", 1f); //parametarise time
+        Invoke("LoadFirstLevel", levelLoadDelay); 
     }
 
     private void LoadNextLevel()
@@ -100,7 +100,7 @@ public class Rocket : MonoBehaviour {
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust /* Time.deltaTime*/);
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
